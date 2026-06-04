@@ -266,45 +266,73 @@
 <!-- ==================== SLIDE 3: 专业度图谱 ==================== -->
 <div class="slide" id="s3">
   <h2>市场专业度图谱</h2>
-  <p style="color:#666;margin-bottom:24px;">从低专业度到高专业度的品牌/产品序列</p>
+  <p style="color:#666;margin-bottom:32px;">Tattoo Workstation Professionalism Spectrum — 基于纹身行业专属设计的专业程度阶梯</p>
 
-  <div class="spectrum" style="max-width:600px;margin:30px auto;">
-    <div class="bar">
-      <span class="label">高专业度 ↑</span>
-      <span></span>
+  <style>
+    .tier-stack { max-width: 720px; margin: 0 auto; }
+    .tier-row { display: flex; align-items: center; margin-bottom: 10px; }
+    .tier-meta { width: 90px; text-align: right; padding-right: 16px; font-size: 12px; color: #999; font-weight: 500; flex-shrink: 0; }
+    .tier-bar { flex: 1; height: 44px; display: flex; align-items: center; padding: 0 18px; color: #fff; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; }
+    .tier-bar.dark { color: #fff; }
+    .tier-bar.light { color: #222; }
+    .tier-label { flex-shrink: 0; width: 130px; font-size: 14px; font-weight: 600; padding-left: 14px; }
+    .tier-divider { display: flex; align-items: center; margin: 16px 0 16px 90px; font-size: 11px; color: #aaa; letter-spacing: 0.05em; }
+    .tier-divider::after { content: ''; flex: 1; height: 1px; background: #ddd; margin-left: 10px; }
+  </style>
+
+  <div class="tier-stack">
+
+    <!-- Tier 1 -->
+    <div class="tier-divider" style="margin-top:0;">第一梯队 · 专业纹身工作站</div>
+    <div class="tier-row">
+      <span class="tier-meta">行业标杆</span>
+      <span class="tier-bar dark" style="background:#1a1a1a; width:100%;">TATSoul (美国)</span>
+      <span class="tier-label">Forte · Envy</span>
     </div>
-    <div class="bar">
-      <span class="label">TATSoul</span>
-      <span class="fill" style="width:440px;">专业纹身工作站 · 行业标杆 · 卫生合规</span>
+    <div class="tier-row">
+      <span class="tier-meta">模块化</span>
+      <span class="tier-bar dark" style="background:#333; width:88%;">Kwadron (波兰)</span>
+      <span class="tier-label">Impala</span>
     </div>
-    <div class="bar">
-      <span class="label">Kwadron</span>
-      <span class="fill" style="width:380px;">模块化工作站 · 高度专业 · 灵活配置</span>
+
+    <!-- Tier 2 -->
+    <div class="tier-divider">第二梯队 · 国产纹身工作站</div>
+    <div class="tier-row">
+      <span class="tier-meta">国产</span>
+      <span class="tier-bar dark" style="background:#666; width:55%;">Titan Tattoo (中国)</span>
+      <span class="tier-label">工作站系列</span>
     </div>
-    <div class="bar">
-      <span class="label">Titan</span>
-      <span class="fill" style="width:240px;">国产工作站 · 功能完整 · 创新不足</span>
+
+    <!-- Tier 3 -->
+    <div class="tier-divider">第三梯队 · 工具车演化</div>
+    <div class="tier-row">
+      <span class="tier-meta">工具车</span>
+      <span class="tier-bar light" style="background:#aaa; width:38%;">TankStorm</span>
+      <span class="tier-label">TZ12W</span>
     </div>
-    <div class="bar">
-      <span class="label">TankStorm</span>
-      <span class="fill" style="width:160px;">工具车演化 · 收纳强 · 缺乏专业流程</span>
+    <div class="tier-row">
+      <span class="tier-meta">通用工具车</span>
+      <span class="tier-bar light" style="background:#ccc; width:24%;">US General · Husky</span>
+      <span class="tier-label">改造方案</span>
     </div>
-    <div class="bar">
-      <span class="label">US General<br>/ Husky</span>
-      <span class="fill" style="width:100px;">通用工具车 · 低成本 · 无纹身专属设计</span>
-    </div>
-    <div class="bar">
-      <span class="label">美容推车</span>
-      <span class="fill" style="width:50px;">美容院演化 · 仅收纳</span>
-    </div>
-    <div class="bar">
-      <span class="label">低专业度 ↓</span>
-      <span></span>
+
+    <!-- Tier 4 -->
+    <div class="tier-divider">第四梯队 · 美容推车演化</div>
+    <div class="tier-row">
+      <span class="tier-meta">OEM 推车</span>
+      <span class="tier-bar light" style="background:#e0e0e0; width:16%;">DongPin · EM · KangFurui</span>
+      <span class="tier-label">美容推车</span>
     </div>
   </div>
 
-  <div class="highlight-box" style="margin-top:30px;">
-    <strong>关键洞察：</strong>现有产品竞争集中在"收纳效率"单轴。消毒管理与信任感设计是市场空白——这正是 INKNOT 的切入点。
+  <div style="display:flex; align-items:center; justify-content:center; gap:24px; margin-top: 20px; font-size: 11px; color: #999;">
+    <span>◀ 低专业度</span>
+    <span style="font-size:13px;font-weight:600;color:#222;">▼ 纹身行业专属设计程度 ▼</span>
+    <span>高专业度 ▶</span>
+  </div>
+
+  <div class="highlight-box" style="margin-top:24px;">
+    <strong>关键洞察：</strong>现有产品的竞争维度集中在「收纳效率」单轴。消毒管理、卫生流程可视化、顾客信任感设计——这三个维度在目前所有梯队中均为空白，构成 INKNOT 的核心切入点。
   </div>
 </div>
 
