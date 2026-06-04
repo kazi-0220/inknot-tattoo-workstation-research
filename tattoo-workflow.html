@@ -165,28 +165,45 @@
   .legend {
     margin-top: 48px;
     border-top: 1px solid #eee;
-    padding-top: 28px;
+    padding-top: 32px;
   }
   .legend h2 {
-    font-size: 20px;
-    margin-bottom: 16px;
+    font-size: 22px;
+    margin-bottom: 24px;
   }
-  .legend-grid {
+  .legend-groups {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 32px;
   }
-  .legend-item {
+  .legend-group {
+    break-inside: avoid;
+  }
+  .legend-group h4 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #999;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #eee;
+  }
+  .legend-group .lg-item {
     display: flex;
     align-items: baseline;
-    gap: 6px;
+    gap: 8px;
     font-size: 13px;
+    padding: 3px 0;
   }
-  .legend-item .name {
+  .legend-group .lg-name {
     font-weight: 600;
+    white-space: nowrap;
+    color: #222;
   }
-  .legend-item .desc {
+  .legend-group .lg-desc {
     color: #888;
+    font-size: 12px;
+    line-height: 1.4;
   }
 
   @media print {
@@ -197,6 +214,7 @@
     body { padding: 20px; }
     .flow { padding-left: 40px; }
     .phase-body { flex-direction: column; }
+    .legend-groups { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -448,22 +466,72 @@
 <!-- ===== TOOL LEGEND ===== -->
 <div class="legend">
   <h2>核心工具清单</h2>
-  <div class="legend-grid">
-    <div class="legend-item"><span class="name">纹身机</span><span class="desc">— 线圈机 (传统) / 马达机 (静音、可调)</span></div>
-    <div class="legend-item"><span class="name">电源供应器</span><span class="desc">— 稳压供电，控制机器速度 & 力度</span></div>
-    <div class="legend-item"><span class="name">脚踏开关</span><span class="desc">— 控制纹身机启停</span></div>
-    <div class="legend-item"><span class="name">针具</span><span class="desc">— RL (割线) / RS (打雾) / M1-M2 (Magnum 大面积)</span></div>
-    <div class="legend-item"><span class="name">色料</span><span class="desc">— 黑色 (割线) + 各色 (打雾上色)</span></div>
-    <div class="legend-item"><span class="name">转印纸 + 转印液</span><span class="desc">— 将图案转印到皮肤</span></div>
-    <div class="legend-item"><span class="name">凡士林</span><span class="desc">— 术中润滑，减少皮肤损伤</span></div>
-    <div class="legend-item"><span class="name">绿色皂液</span><span class="desc">— 术中清洁、术后清洗</span></div>
-    <div class="legend-item"><span class="name">修复膜 (Derm Shield)</span><span class="desc">— 术后覆盖保护创口</span></div>
-    <div class="legend-item"><span class="name">超声波清洗机</span><span class="desc">— 清洗可复用器械</span></div>
-    <div class="legend-item"><span class="name">高温高压灭菌器</span><span class="desc">— Autoclave，医疗器械灭菌标配</span></div>
-    <div class="legend-item"><span class="name">利器回收盒</span><span class="desc">— 废弃针头安全回收</span></div>
-    <div class="legend-item"><span class="name">一次性手套</span><span class="desc">— 全程使用，接触污染后立即更换</span></div>
-    <div class="legend-item"><span class="name">工作台保护膜</span><span class="desc">— 隔离工作台面与污染源</span></div>
-    <div class="legend-item"><span class="name">机器保护套</span><span class="desc">— 隔离纹身机与血液/色料</span></div>
+  <div class="legend-groups">
+
+    <div class="legend-group">
+      <h4>🖊️ 设计准备</h4>
+      <div class="lg-item"><span class="lg-name">iPad / 绘图板</span><span class="lg-desc">— 数字设计、图案调整</span></div>
+      <div class="lg-item"><span class="lg-name">转印纸 + 转印液</span><span class="lg-desc">— 图案转印至皮肤</span></div>
+      <div class="lg-item"><span class="lg-name">皮肤记号笔</span><span class="lg-desc">— 标记位置与边界</span></div>
+      <div class="lg-item"><span class="lg-name">一次性剃毛刀</span><span class="lg-desc">— 备皮，清除毛发</span></div>
+      <div class="lg-item"><span class="lg-name">测量尺</span><span class="lg-desc">— 确认尺寸比例</span></div>
+    </div>
+
+    <div class="legend-group">
+      <h4>⚙️ 纹身设备</h4>
+      <div class="lg-item"><span class="lg-name">纹身机</span><span class="lg-desc">— 线圈机（传统）/ 马达机（静音可调）</span></div>
+      <div class="lg-item"><span class="lg-name">电源供应器</span><span class="lg-desc">— 稳压供电，控制速度力度</span></div>
+      <div class="lg-item"><span class="lg-name">脚踏开关</span><span class="lg-desc">— 控制纹身机启停</span></div>
+      <div class="lg-item"><span class="lg-name">握把 / 手柄</span><span class="lg-desc">— 连接机器与针具</span></div>
+    </div>
+
+    <div class="legend-group">
+      <h4>🪡 针具体系</h4>
+      <div class="lg-item"><span class="lg-name">RL 割线针</span><span class="lg-desc">— Round Liner，轮廓走线</span></div>
+      <div class="lg-item"><span class="lg-name">RS 打雾针</span><span class="lg-desc">— Round Shader，小面积上色</span></div>
+      <div class="lg-item"><span class="lg-name">M1 / M2 Magnum</span><span class="lg-desc">— 大面积色块填充</span></div>
+    </div>
+
+    <div class="legend-group">
+      <h4>🎨 色料系统</h4>
+      <div class="lg-item"><span class="lg-name">黑色色料</span><span class="lg-desc">— 割线专用，高密度黑</span></div>
+      <div class="lg-item"><span class="lg-name">彩色色料</span><span class="lg-desc">— 各色系，按风格选择</span></div>
+      <div class="lg-item"><span class="lg-name">稀释液</span><span class="lg-desc">— 调节色料浓度和灰度</span></div>
+      <div class="lg-item"><span class="lg-name">一次性色料杯</span><span class="lg-desc">— 分装色料，一色一杯</span></div>
+    </div>
+
+    <div class="legend-group">
+      <h4>🧤 术中耗材</h4>
+      <div class="lg-item"><span class="lg-name">凡士林</span><span class="lg-desc">— 术中润滑，减少皮肤损伤</span></div>
+      <div class="lg-item"><span class="lg-name">绿色皂液</span><span class="lg-desc">— 术中清洁、术后清洗</span></div>
+      <div class="lg-item"><span class="lg-name">喷雾瓶</span><span class="lg-desc">— 绿皂水持续喷淋清洁</span></div>
+      <div class="lg-item"><span class="lg-name">纸巾 / 蓝卷纸</span><span class="lg-desc">— 擦拭多余色料与血液</span></div>
+    </div>
+
+    <div class="legend-group">
+      <h4>🩺 卫生隔离</h4>
+      <div class="lg-item"><span class="lg-name">一次性手套</span><span class="lg-desc">— 全程佩戴，接触污染物即换</span></div>
+      <div class="lg-item"><span class="lg-name">工作台保护膜</span><span class="lg-desc">— 隔离台面与污染源</span></div>
+      <div class="lg-item"><span class="lg-name">机器保护套 / 隔离袋</span><span class="lg-desc">— 隔离机器与血液色料</span></div>
+    </div>
+
+    <div class="legend-group">
+      <h4>♨️ 消毒灭菌</h4>
+      <div class="lg-item"><span class="lg-name">超声波清洗机</span><span class="lg-desc">— 清洗可复用器械表面残留</span></div>
+      <div class="lg-item"><span class="lg-name">高温高压灭菌器 (Autoclave)</span><span class="lg-desc">— 医疗器械灭菌标准</span></div>
+      <div class="lg-item"><span class="lg-name">酶清洗液</span><span class="lg-desc">— 浸泡分解有机残留</span></div>
+      <div class="lg-item"><span class="lg-name">灭菌包装袋</span><span class="lg-desc">— 封装已灭菌器械</span></div>
+      <div class="lg-item"><span class="lg-name">利器回收盒</span><span class="lg-desc">— 废弃针头安全回收</span></div>
+    </div>
+
+    <div class="legend-group">
+      <h4>🩹 术后护理</h4>
+      <div class="lg-item"><span class="lg-name">修复膜 (Derm Shield)</span><span class="lg-desc">— 术后覆盖保护创口</span></div>
+      <div class="lg-item"><span class="lg-name">修复膏 / 护理霜</span><span class="lg-desc">— 促进愈合，缓解不适</span></div>
+      <div class="lg-item"><span class="lg-name">无菌纱布</span><span class="lg-desc">— 术后清洁干燥</span></div>
+      <div class="lg-item"><span class="lg-name">防晒霜 SPF 50+</span><span class="lg-desc">— 保护新纹身免受紫外线损伤</span></div>
+    </div>
+
   </div>
 </div>
 
