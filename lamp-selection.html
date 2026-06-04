@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INKNOT 消毒灯选型决策</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #fff;
+    color: #1a1a1a;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 40px;
+  }
+  h1 { font-size: 28px; margin-bottom: 4px; }
+  .subtitle { font-size: 14px; color: #999; margin-bottom: 36px; }
+
+  /* Decision Flow */
+  .decision-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .decision-node {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 24px 28px;
+  }
+  .decision-node.pass { border-left: 4px solid #4caf50; }
+  .decision-node.fail { border-left: 4px solid #e53935; background: #fafafa; }
+  .decision-node.choice { border-left: 4px solid #000; border: 2px solid #000; }
+
+  .node-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .node-icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+  .pass .node-icon { background: #e8f5e9; }
+  .fail .node-icon { background: #fce4ec; }
+  .choice .node-icon { background: #000; color: #fff; }
+
+  .node-title { font-size: 18px; font-weight: 700; }
+  .node-verdict {
+    font-size: 13px; font-weight: 700;
+    margin-left: auto; padding: 4px 12px; border-radius: 3px;
+  }
+  .verdict-pass { background: #e8f5e9; color: #2e7d32; }
+  .verdict-fail { background: #fce4ec; color: #c62828; }
+  .verdict-best { background: #000; color: #fff; }
+
+  .criteria-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .criteria-grid .cr {
+    display: flex; align-items: center; gap: 8px;
+  }
+  .cr .check { color: #4caf50; font-weight: 700; }
+  .cr .cross { color: #e53935; font-weight: 700; }
+
+  .arrow-down {
+    text-align: center; font-size: 24px; color: #ccc;
+    padding: 4px 0;
+  }
+  .arrow-down.dashed { color: #e0e0e0; }
+
+  .branch-label {
+    font-size: 12px; color: #999; text-align: center;
+    padding: 6px 0; letter-spacing: 0.04em;
+  }
+
+  /* Branch layout */
+  .branch-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* Conclusion */
+  .conclusion {
+    margin-top: 32px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 28px;
+    text-align: center;
+  }
+  .conclusion h2 { font-size: 22px; margin-bottom: 12px; }
+  .conclusion .choice-row {
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    margin: 16px 0;
+  }
+  .conclusion .tech-card {
+    background: #f9f9f9; padding: 12px 20px; border-radius: 6px;
+    font-weight: 700; font-size: 16px;
+  }
+  .conclusion .arrow { font-size: 24px; }
+  .conclusion .final {
+    background: #000; color: #fff; padding: 14px 28px; border-radius: 6px;
+    font-weight: 700; font-size: 18px;
+  }
+  .conclusion .why {
+    font-size: 14px; color: #666; margin-top: 12px; line-height: 1.8;
+  }
+
+  /* Spec table */
+  .spec-table {
+    width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px;
+  }
+  .spec-table th, .spec-table td {
+    border: 1px solid #ddd; padding: 8px 12px; text-align: center;
+  }
+  .spec-table th { background: #f5f5f5; font-weight: 600; }
+  .spec-table .win { background: #e8f5e9; font-weight: 700; }
+  .spec-table .lose { color: #999; }
+
+  @media print { body { padding: 20px; } }
+</style>
+</head>
+<body>
+
+<h1>INKNOT UV 洁净仓 — 消毒光源选型决策</h1>
+<p class="subtitle">从四类候选技术到最终方案的完整筛选逻辑</p>
+
+<div class="decision-flow">
+
+  <!-- ===== STEP 1: CANDIDATES ===== -->
+  <div style="text-align:center;padding:8px;font-size:13px;color:#999;letter-spacing:0.04em;">▼ 第一步：候选技术全景 ▼</div>
+  <div class="decision-node pass">
+    <div class="node-header">
+      <span class="node-icon">🔍</span>
+      <span class="node-title">候选技术：目前全球所有可用于消毒的光源</span>
+      <span class="node-verdict verdict-pass">4 类候选</span>
+    </div>
+    <table class="spec-table">
+      <tr>
+        <th></th><th>A · 传统 UVC 汞灯</th><th>B · UVC LED</th><th>C · Far-UVC 222nm</th><th>D · 蓝光 405nm</th>
+      </tr>
+      <tr>
+        <td>波长</td><td>254 nm</td><td>265–280 nm</td><td>222 nm</td><td>405 nm</td>
+      </tr>
+      <tr>
+        <td>光源</td><td>汞蒸气管</td><td>LED 芯片</td><td>KrCl 准分子灯</td><td>LED</td>
+      </tr>
+      <tr>
+        <td>杀菌速度</td><td>⚡ 快</td><td>⚡ 快</td><td>⚡ 快</td><td>🐢 慢（需数小时）</td>
+      </tr>
+      <tr>
+        <td>对人体安全</td><td>❌ 致癌/伤眼</td><td>❌ 同左</td><td>✅ 皮肤/眼安全</td><td>✅ 完全安全</td>
+      </tr>
+      <tr>
+        <td>含汞</td><td>❌ 有</td><td>✅ 无</td><td>✅ 无</td><td>✅ 无</td>
+      </tr>
+      <tr>
+        <td>寿命</td><td>~8,000 h</td><td>~10,000 h</td><td>~10,000 h</td><td>~50,000 h</td>
+      </tr>
+      <tr>
+        <td>成本</td><td>低</td><td>中</td><td>高</td><td>中</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ===== STEP 2: FIRST ELIMINATION ===== -->
+  <div class="arrow-down">⬇</div>
+  <div style="text-align:center;padding:4px;font-size:12px;color:#999;">第二步：用 INKNOT 核心约束条件逐一淘汰</div>
+  <div class="arrow-down">⬇</div>
+
+  <!-- Constraint 1 -->
+  <div class="decision-node fail">
+    <div class="node-header">
+      <span class="node-icon">✖</span>
+      <span class="node-title">约束 ① ：必须人机共存——抽屉打开、滑盖透明时，光对客户零伤害</span>
+      <span class="node-verdict verdict-fail">淘汰 A、B</span>
+    </div>
+    <div class="criteria-grid">
+      <div class="cr"><span class="cross">✗ 传统 UVC 254nm</span> — 致癌、灼伤眼角膜，必须完全密闭，滑盖透明会漏光</div>
+      <div class="cr"><span class="cross">✗ UVC LED 265-280nm</span> — 同属 UVC 波段，对人体有害，必须联锁断电</div>
+      <div class="cr"><span class="check">✓ Far-UVC 222nm</span> — 穿透力仅到皮肤角质层死细胞，不伤活细胞，IEC 62471 认证人机共存</div>
+      <div class="cr"><span class="check">✓ 蓝光 405nm</span> — 完全无害，可常年常亮</div>
+    </div>
+  </div>
+
+  <!-- Constraint 2 -->
+  <div class="arrow-down">⬇</div>
+  <div class="decision-node fail">
+    <div class="node-header">
+      <span class="node-icon">✖</span>
+      <span class="node-title">约束 ② ：以"维持洁净"为主功能，但必须具备真正的杀菌能力（不能是装饰灯）</span>
+      <span class="node-verdict verdict-fail">淘汰 D</span>
+    </div>
+    <div class="criteria-grid">
+      <div class="cr"><span class="check">✓ Far-UVC 222nm</span> — 与 254nm 同机制（破坏 DNA/RNA），秒级灭活</div>
+      <div class="cr"><span class="cross">✗ 蓝光 405nm</span> — 靠激发细菌内卟啉产生活性氧，杀菌需数十分钟至数小时，速度慢，实际效果弱</div>
+    </div>
+    <p style="font-size:12px;color:#888;margin-top:8px;">蓝光在纹身场景下不适用：工具包取出前不可能等几小时。蓝光多用于医院墙壁/食品工厂的连续背景照明，不适合封闭小仓的快速维护。</p>
+  </div>
+
+  <!-- FINAL -->
+  <div class="arrow-down">⬇</div>
+  <div style="text-align:center;padding:6px;font-size:13px;font-weight:700;">第三步：唯一剩下的选项</div>
+  <div class="arrow-down">⬇</div>
+
+  <div class="decision-node choice">
+    <div class="node-header">
+      <span class="node-icon">✅</span>
+      <span class="node-title">最终选择：Far-UVC 222nm 准分子灯</span>
+      <span class="node-verdict verdict-best">唯一满足全部约束</span>
+    </div>
+    <table class="spec-table">
+      <tr>
+        <th>约束条件</th><th>INKNOT 需求</th><th>Far-UVC 222nm 表现</th>
+      </tr>
+      <tr><td>人机共存</td><td>滑盖透明，抽屉常亮，客户可凑近看</td><td class="win">✅ 皮肤+眼安全，IEC 62471 认证</td></tr>
+      <tr><td>杀菌能力</td><td>对一次性工具包表面维持洁净</td><td class="win">✅ 254nm 同机制，秒级灭活</td></tr>
+      <tr><td>视觉信号</td><td>顾客能感知"消毒在发生"</td><td class="win">✅ 淡蓝紫辉光，科技感强</td></tr>
+      <tr><td>环保</td><td>无汞</td><td class="win">✅ KrCl 准分子，无汞</td></tr>
+      <tr><td>体积</td><td>可嵌入抽屉/滑盖顶部</td><td class="win">✅ 模块化灯管，紧凑</td></tr>
+      <tr><td>法规</td><td>符合国标/国际安全标准</td><td class="win">✅ GB/T 30117.6-2025 / ACGIH 认可</td></tr>
+    </table>
+  </div>
+
+</div>
+
+<!-- ===== CONCLUSION ===== -->
+<div class="conclusion">
+  <h2>选型结论</h2>
+  <div class="choice-row">
+    <div class="tech-card">传统 UVC 汞灯 ✗</div>
+    <span class="arrow">→</span>
+    <div class="tech-card">UVC LED ✗</div>
+    <span class="arrow">→</span>
+    <div class="tech-card" style="text-decoration: line-through; color: #999;">蓝光 405nm ✗</div>
+    <span class="arrow">→</span>
+    <div class="final">Far-UVC 222nm ✅</div>
+  </div>
+  <div class="why">
+    <strong>核心逻辑：</strong>INKNOT 的 UV 洁净仓需要<strong>人机共存 + 真正杀菌 + 视觉可见</strong>三者同时满足。<br>
+    传统 UVC（含 LED）虽杀菌强但不安全 → 淘汰。<br>
+    蓝光虽安全但杀菌太慢，更像"氛围灯" → 淘汰。<br>
+    <strong>Far-UVC 222nm 是唯一同时通过两项约束的技术。</strong><br><br>
+    <span style="color:#888;">代表产品：USHIO Care222（日本）/ JKUVC（中国）</span>
+  </div>
+</div>
+
+</body>
+</html>
