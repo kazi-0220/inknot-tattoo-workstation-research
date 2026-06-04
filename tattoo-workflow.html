@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>纹身全流程图 — INKNOT 工作流研究</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #fff;
+    color: #1a1a1a;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 60px;
+  }
+
+  h1 {
+    font-size: 32px;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .subtitle { font-size: 15px; color: #888; margin-bottom: 36px; }
+
+  /* ===== FLOW ===== */
+  .flow {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-left: 60px;
+  }
+
+  .flow::before {
+    content: '';
+    position: absolute;
+    left: 23px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #1a1a1a;
+  }
+
+  .phase {
+    position: relative;
+    margin-bottom: 36px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 24px 28px;
+    background: #fff;
+  }
+
+  .phase::before {
+    content: '';
+    position: absolute;
+    left: -45px;
+    top: 32px;
+    width: 12px;
+    height: 12px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px #1a1a1a;
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .phase-num {
+    background: #1a1a1a;
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .phase-title {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .phase-time {
+    font-size: 13px;
+    color: #999;
+    font-weight: 400;
+  }
+
+  .phase-body {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .col {
+    flex: 1;
+    min-width: 240px;
+  }
+  .col h4 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #999;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 4px;
+  }
+
+  .tool-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .tool-tag {
+    display: inline-block;
+    background: #f5f5f5;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 13px;
+    color: #333;
+  }
+  .tool-tag.key {
+    background: #1a1a1a;
+    color: #fff;
+  }
+
+  .step-list {
+    list-style: none;
+    padding: 0;
+  }
+  .step-list li {
+    font-size: 14px;
+    padding: 3px 0;
+    padding-left: 16px;
+    position: relative;
+    color: #444;
+  }
+  .step-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #ccc;
+  }
+
+  .hygiene-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .hygiene-badge.critical { background: #fce4ec; color: #c62828; }
+  .hygiene-badge.important { background: #fff3e0; color: #e65100; }
+
+  /* ===== TOOL LEGEND ===== */
+  .legend {
+    margin-top: 48px;
+    border-top: 1px solid #eee;
+    padding-top: 28px;
+  }
+  .legend h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+  .legend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-size: 13px;
+  }
+  .legend-item .name {
+    font-weight: 600;
+  }
+  .legend-item .desc {
+    color: #888;
+  }
+
+  @media print {
+    body { padding: 20px; }
+    .phase { break-inside: avoid; }
+  }
+  @media (max-width: 768px) {
+    body { padding: 20px; }
+    .flow { padding-left: 40px; }
+    .phase-body { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<h1>纹身全流程图</h1>
+<p class="subtitle">Tattoo Workflow Map — 为 INKNOT 纹身工具台设计提供工作流参考 · 从咨询到愈合的完整链路</p>
+
+<div class="flow">
+
+  <!-- Phase 1 -->
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-num">1</span>
+      <span class="phase-title">咨询与设计 <span class="phase-time">· 30–60 min</span></span>
+    </div>
+    <div class="phase-body">
+      <div class="col">
+        <h4>工具</h4>
+        <div class="tool-list">
+          <span class="tool-tag key">iPad / 绘图板</span>
+          <span class="tool-tag">设计软件 (Procreate)</span>
+          <span class="tool-tag">参考图库</span>
+          <span class="tool-tag">皮肤记号笔</span>
+          <span class="tool-tag">转印纸</span>
+          <span class="tool-tag">测量尺</span>
+          <span class="tool-tag">咨询表</span>
+        </div>
+        <h4>耗材</h4>
+        <div class="tool-list">
+          <span class="tool-tag">转印膏 / 转印液</span>
+          <span class="tool-tag">皮肤消毒液</span>
+          <span class="tool-tag">一次性剃毛刀</span>
+        </div>
+      </div>
+      <div class="col">
+        <h4>流程步骤</h4>
+        <ul class="step-list">
+          <li>与客户沟通图案需求、风格、尺寸、位置</li>
+          <li>评估皮肤状况（疤痕、痣、皮肤类型）</li>
+          <li>签署知情同意书</li>
+          <li>设计或调整图案（手绘 / 数字）</li>
+          <li>将图案转印至转印纸</li>
+          <li><span class="hygiene-badge important">备皮</span> 剃毛 → 消毒 → 转印图案到皮肤</li>
+          <li>客户确认位置与大小</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 2 -->
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-num">2</span>
+      <span class="phase-title">环境与工具准备 <span class="phase-time">· 15–20 min</span></span>
+    </div>
+    <div class="phase-body">
+      <div class="col">
+        <h4>工具</h4>
+        <div class="tool-list">
+          <span class="tool-tag key">纹身机 (线圈/马达)</span>
+          <span class="tool-tag key">电源供应器</span>
+          <span class="tool-tag key">脚踏开关</span>
+          <span class="tool-tag">针具 (各类针型)</span>
+          <span class="tool-tag">手柄 / 握把</span>
+          <span class="tool-tag">色料杯 / 墨杯</span>
+          <span class="tool-tag">色料瓶</span>
+        </div>
+        <h4>耗材</h4>
+        <div class="tool-list">
+          <span class="tool-tag">一次性针具</span>
+          <span class="tool-tag">一次性手套</span>
+          <span class="tool-tag">一次性色料杯</span>
+          <span class="tool-tag">机器保护套 / 隔离袋</span>
+          <span class="tool-tag">工作台保护膜</span>
+          <span class="tool-tag">纸巾 / 蓝卷纸</span>
+        </div>
+      </div>
+      <div class="col">
+        <h4>流程步骤</h4>
+        <ul class="step-list">
+          <li>工作台覆保鲜膜 / 隔离膜</li>
+          <li>纹身机装保护套（隔离袋）</li>
+          <li>针具从灭菌包装中取出并安装</li>
+          <li>色料倒入一次性色料杯</li>
+          <li>电源、脚踏线缆整理</li>
+          <li><span class="hygiene-badge critical">消毒</span> 所有接触面二次消毒</li>
+          <li>洗手 + 戴上一次性手套</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 3 -->
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-num">3</span>
+      <span class="phase-title">割线 <span class="phase-time">· 30–90 min</span></span>
+    </div>
+    <div class="phase-body">
+      <div class="col">
+        <h4>工具</h4>
+        <div class="tool-list">
+          <span class="tool-tag key">纹身机 (割线用)</span>
+          <span class="tool-tag key">RL 割线针 (Round Liner)</span>
+          <span class="tool-tag">黑色色料</span>
+          <span class="tool-tag">凡士林</span>
+          <span class="tool-tag">喷雾瓶 (绿皂水)</span>
+        </div>
+      </div>
+      <div class="col">
+        <h4>流程步骤</h4>
+        <ul class="step-list">
+          <li>沿转印线走线，控制深度 (1–2mm 真皮层)</li>
+          <li>持续擦拭多余色料与血液</li>
+          <li>涂抹凡士林保持皮肤润滑</li>
+          <li>绿色皂液喷雾清洁表面</li>
+          <li><span class="hygiene-badge important">卫生</span> 每接触非无菌物后换手套</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 4 -->
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-num">4</span>
+      <span class="phase-title">打雾 / 上色 <span class="phase-time">· 1–4 hr</span></span>
+    </div>
+    <div class="phase-body">
+      <div class="col">
+        <h4>工具</h4>
+        <div class="tool-list">
+          <span class="tool-tag key">纹身机 (打雾用)</span>
+          <span class="tool-tag key">RS/M 打雾针 (Round Shader / Magnum)</span>
+          <span class="tool-tag">各色色料</span>
+          <span class="tool-tag">稀释液</span>
+          <span class="tool-tag">凡士林</span>
+        </div>
+      </div>
+      <div class="col">
+        <h4>流程步骤</h4>
+        <ul class="step-list">
+          <li>换针 → 换色料杯 → 按色块区域逐步填充</li>
+          <li>由深到浅或由浅到深（取决于风格）</li>
+          <li>不同针型切换：M1 (窄 magnum) → M2 (宽 magnum)</li>
+          <li>白点高光提亮（部分风格）</li>
+          <li>持续清洁 + 润滑表面</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 5 -->
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-num">5</span>
+      <span class="phase-title">清洁与包扎 <span class="phase-time">· 5–10 min</span></span>
+    </div>
+    <div class="phase-body">
+      <div class="col">
+        <h4>工具</h4>
+        <div class="tool-list">
+          <span class="tool-tag key">绿色皂液 / 专用清洁液</span>
+          <span class="tool-tag">无菌纱布</span>
+          <span class="tool-tag key">修复膏 / 凡士林</span>
+          <span class="tool-tag key">医用胶带 / 修复膜 (Derm Shield)</span>
+          <span class="tool-tag">一次性手套</span>
+        </div>
+      </div>
+      <div class="col">
+        <h4>流程步骤</h4>
+        <ul class="step-list">
+          <li>绿色皂液彻底清洁纹身区域</li>
+          <li>无菌纱布轻拍干燥</li>
+          <li>薄涂一层专用修复膏或凡士林</li>
+          <li>覆盖修复膜 (如 Saniderm / Derm Shield)</li>
+          <li>告知客户后续护理方法</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 6 -->
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-num">6</span>
+      <span class="phase-title">器械回收与消毒 <span class="phase-time">· 10–15 min</span></span>
+    </div>
+    <div class="phase-body">
+      <div class="col">
+        <h4>工具</h4>
+        <div class="tool-list">
+          <span class="tool-tag key">超声波清洗机</span>
+          <span class="tool-tag key">高温高压灭菌器 (Autoclave)</span>
+          <span class="tool-tag">酶清洗液</span>
+          <span class="tool-tag">消毒浸泡盘</span>
+          <span class="tool-tag">灭菌包装袋</span>
+          <span class="tool-tag">利器回收盒 (Sharps Container)</span>
+        </div>
+      </div>
+      <div class="col">
+        <h4>流程步骤</h4>
+        <ul class="step-list">
+          <li><span class="hygiene-badge critical">安全</span> 废弃针头丢入利器回收盒</li>
+          <li>一次性耗材 (手套/色料杯/保护膜) 丢弃</li>
+          <li>纹身机手柄、握把拆解 → 酶液浸泡</li>
+          <li>超声波清洗机清洗可复用器械</li>
+          <li>干燥 → 封装灭菌袋 → 高温高压灭菌</li>
+          <li>工作台面全面消毒擦拭</li>
+          <li>灭菌记录登记 (spore test 定期检测)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 7 -->
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-num">7</span>
+      <span class="phase-title">客户术后护理 <span class="phase-time">· 2–4 周愈合期</span></span>
+    </div>
+    <div class="phase-body">
+      <div class="col">
+        <h4>客户需备</h4>
+        <div class="tool-list">
+          <span class="tool-tag">修复膏 / 专用护理霜</span>
+          <span class="tool-tag">无香型温和皂</span>
+          <span class="tool-tag">修复膜 (替换用)</span>
+          <span class="tool-tag">防晒霜 (SPF 50+)</span>
+        </div>
+      </div>
+      <div class="col">
+        <h4>客户须知</h4>
+        <ul class="step-list">
+          <li>24h 后揭除首层修复膜，温水冲洗</li>
+          <li>每日 2–3 次温和清洁 + 薄涂修复膏</li>
+          <li>避免浸泡 (泳池/浴缸/桑拿) 2–4 周</li>
+          <li>避免阳光直射，出门涂 SPF 50+</li>
+          <li>结痂期间不抓挠，自然脱落</li>
+          <li>4–6 周后回店复查，必要时免费补色</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== TOOL LEGEND ===== -->
+<div class="legend">
+  <h2>核心工具清单</h2>
+  <div class="legend-grid">
+    <div class="legend-item"><span class="name">纹身机</span><span class="desc">— 线圈机 (传统) / 马达机 (静音、可调)</span></div>
+    <div class="legend-item"><span class="name">电源供应器</span><span class="desc">— 稳压供电，控制机器速度 & 力度</span></div>
+    <div class="legend-item"><span class="name">脚踏开关</span><span class="desc">— 控制纹身机启停</span></div>
+    <div class="legend-item"><span class="name">针具</span><span class="desc">— RL (割线) / RS (打雾) / M1-M2 (Magnum 大面积)</span></div>
+    <div class="legend-item"><span class="name">色料</span><span class="desc">— 黑色 (割线) + 各色 (打雾上色)</span></div>
+    <div class="legend-item"><span class="name">转印纸 + 转印液</span><span class="desc">— 将图案转印到皮肤</span></div>
+    <div class="legend-item"><span class="name">凡士林</span><span class="desc">— 术中润滑，减少皮肤损伤</span></div>
+    <div class="legend-item"><span class="name">绿色皂液</span><span class="desc">— 术中清洁、术后清洗</span></div>
+    <div class="legend-item"><span class="name">修复膜 (Derm Shield)</span><span class="desc">— 术后覆盖保护创口</span></div>
+    <div class="legend-item"><span class="name">超声波清洗机</span><span class="desc">— 清洗可复用器械</span></div>
+    <div class="legend-item"><span class="name">高温高压灭菌器</span><span class="desc">— Autoclave，医疗器械灭菌标配</span></div>
+    <div class="legend-item"><span class="name">利器回收盒</span><span class="desc">— 废弃针头安全回收</span></div>
+    <div class="legend-item"><span class="name">一次性手套</span><span class="desc">— 全程使用，接触污染后立即更换</span></div>
+    <div class="legend-item"><span class="name">工作台保护膜</span><span class="desc">— 隔离工作台面与污染源</span></div>
+    <div class="legend-item"><span class="name">机器保护套</span><span class="desc">— 隔离纹身机与血液/色料</span></div>
+  </div>
+</div>
+
+</body>
+</html>
