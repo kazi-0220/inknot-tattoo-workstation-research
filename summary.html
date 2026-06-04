@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INKNOT 设计调研 — 品牌/技术/产品汇总表</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #fff;
+    color: #1a1a1a;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 44px;
+  }
+  h1 { font-size: 26px; margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: #999; margin-bottom: 28px; }
+
+  .section { margin-bottom: 36px; }
+  .section h2 {
+    font-size: 18px; margin-bottom: 12px;
+    padding-bottom: 6px; border-bottom: 2px solid #000;
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 16px; }
+  th, td { border: 1px solid #ddd; padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: #f5f5f5; font-weight: 600; font-size: 12px; white-space: nowrap; }
+  td a { color: #1a1a1a; }
+  td a:hover { color: #666; }
+
+  .tag-sm { display:inline-block;padding:1px 6px;border-radius:2px;font-size:11px;margin-right:3px; }
+  .tag-tier1 { background:#1a1a1a;color:#fff; }
+  .tag-tier2 { background:#666;color:#fff; }
+  .tag-tier3 { background:#aaa;color:#fff; }
+  .tag-tier4 { background:#e0e0e0;color:#333; }
+  .tag-fr { background:#e3f2fd;color:#1565c0; }
+  .tag-it { background:#e8f5e9;color:#2e7d32; }
+  .tag-jp { background:#fce4ec;color:#c62828; }
+  .tag-kr { background:#f3e5f5;color:#7b1fa2; }
+
+  .footnote { font-size:12px; color:#999; margin-top:24px; line-height:1.8; }
+</style>
+</head>
+<body>
+
+<h1>INKNOT 设计调研 — 全部品牌/技术/产品汇总</h1>
+<p class="subtitle">纹身工具台 · 消毒光源 · 安全标准 · 香纸品牌 · 2026年6月</p>
+
+<!-- ===== 1. 纹身工具台 ===== -->
+<div class="section">
+  <h2>一、纹身工具台竞品</h2>
+  <table>
+    <tr><th>品牌</th><th>国家</th><th>梯队</th><th>代表型号</th><th>价格</th><th>优势</th><th>不足</th><th>链接</th></tr>
+    <tr>
+      <td><strong>TATSoul</strong></td><td>🇺🇸 美国</td>
+      <td><span class="tag-sm tag-tier1">第一梯队</span></td>
+      <td>Forte · Envy</td><td>$1500–2500+</td>
+      <td>行业标杆 · 卫生合规 · 工作流成熟</td><td>无可视化卫生体验</td>
+      <td><a href="https://tatsoul.com/collections/tattoo-workstations-trays" target="_blank">官网</a></td>
+    </tr>
+    <tr>
+      <td><strong>Kwadron</strong></td><td>🇵🇱 波兰</td>
+      <td><span class="tag-sm tag-tier1">第一梯队</span></td>
+      <td>Impala</td><td>€599</td>
+      <td>模块化架构 · 灵活配置</td><td>无消毒系统</td>
+      <td><a href="https://www.kwadron.pl/" target="_blank">官网</a> · <a href="https://www.nordictattoosupplies.com/.../Products/IMPALA-BL" target="_blank">经销商</a></td>
+    </tr>
+    <tr>
+      <td><strong>Titan Tattoo</strong></td><td>🇨🇳 中国</td>
+      <td><span class="tag-sm tag-tier2">第二梯队</span></td>
+      <td>工作站系列</td><td>¥2000–5000</td>
+      <td>功能完整 · 价格适中</td><td>创新不足 · 品牌力弱</td>
+      <td><a href="https://www.alibaba.com/showroom/titan-tattoo-cart.html" target="_blank">Alibaba</a></td>
+    </tr>
+    <tr>
+      <td><strong>TankStorm</strong></td><td>🇨🇳 中国</td>
+      <td><span class="tag-sm tag-tier3">第三梯队</span></td>
+      <td>TZ12W</td><td>€199–239</td>
+      <td>收纳强 · 成本低</td><td>无专业卫生管理</td>
+      <td><a href="https://www.nordictattoosupplies.com/.../Products/TANKSTORM" target="_blank">经销商</a></td>
+    </tr>
+    <tr>
+      <td><strong>US General</strong></td><td>🇺🇸 美国</td>
+      <td><span class="tag-sm tag-tier3">第三梯队</span></td>
+      <td>30" 5-Drawer Cart</td><td>$299</td><td>收纳极强 · 便宜</td><td>无纹身专属设计</td>
+      <td><a href="https://www.harborfreight.com/30-in-5-drawer-mechanics-cart-58805.html" target="_blank">Harbor Freight</a></td>
+    </tr>
+    <tr>
+      <td><strong>Husky</strong></td><td>🇺🇸 美国</td>
+      <td><span class="tag-sm tag-tier3">第三梯队</span></td>
+      <td>工具车系列</td><td>$199–499</td><td>耐用 · 通用性强</td><td>无纹身专属设计</td>
+      <td><a href="https://www.homedepot.com/b/Tools-Tool-Storage-Tool-Chests/Husky/" target="_blank">Home Depot</a></td>
+    </tr>
+    <tr>
+      <td><strong>DongPin</strong></td><td>🇨🇳 中国</td>
+      <td><span class="tag-sm tag-tier4">第四梯队</span></td>
+      <td>DP-4701</td><td>US$300–320</td>
+      <td>出货量大 · 便宜</td><td>美容推车演化 · 非工作系统</td>
+      <td><a href="https://www.alibaba.com/product-detail/Multi-Function-Tattoo-Tool-Trolley-Cart_1601277421356.html" target="_blank">Alibaba</a></td>
+    </tr>
+    <tr>
+      <td><strong>KangFurui</strong></td><td>🇨🇳 中国</td>
+      <td><span class="tag-sm tag-tier4">第四梯队</span></td>
+      <td>美容推车系列</td><td>¥200–2000</td>
+      <td>价格极低</td><td>仅收纳工具</td>
+      <td><a href="https://www.madeinchina.com/supplier/kangfurui/" target="_blank">Made-in-China</a></td>
+    </tr>
+  </table>
+  <p style="font-size:12px;color:#999;">全球唯⼀纹身⼯具⻋+消毒柜专利：CN221949939U（佛山天屹，2024，未商品化）— <a href="https://patents.google.com/patent/CN221949939U/" target="_blank">Google Patents</a></p>
+</div>
+
+<!-- ===== 2. 消毒光源 ===== -->
+<div class="section">
+  <h2>二、消毒光源技术对比</h2>
+  <table>
+    <tr><th>技术</th><th>波长</th><th>光源</th><th>杀菌速度</th><th>人机共存</th><th>含汞</th><th>寿命</th><th>单仓成本</th><th>INKNOT 结论</th></tr>
+    <tr>
+      <td><strong>传统 UVC 汞灯</strong></td><td>254nm</td><td>汞蒸气管</td><td>⚡ 快</td><td>❌ IARC Group 1 致癌</td><td>❌</td><td>~8,000h</td><td>¥30–80</td>
+      <td style="color:#e53935;">✗ 不安全</td>
+    </tr>
+    <tr>
+      <td><strong>UVC LED</strong></td><td>265–280nm</td><td>LED 芯片</td><td>⚡ 快</td><td>❌ 同 254nm 有害</td><td>✅</td><td>~10,000h</td><td>¥150–400</td>
+      <td style="color:#4caf50;">✅ 原型方案<br><span style="font-size:11px;">+联锁+防UV玻璃</span></td>
+    </tr>
+    <tr>
+      <td><strong>Far-UVC 222nm</strong></td><td>222nm</td><td>KrCl 准分子灯</td><td>⚡ 快</td><td>✅ ACGIH/IEC 认证</td><td>✅</td><td>~10,000h</td><td>¥1,800–2,500</td>
+      <td style="color:#4caf50;">⭐ 远期方案<br><span style="font-size:11px;">成本下降后升级</span></td>
+    </tr>
+    <tr>
+      <td><strong>蓝光 405nm</strong></td><td>405nm</td><td>LED</td><td>🐢 慢（数小时）</td><td>✅ 完全安全</td><td>✅</td><td>~50,000h</td><td>¥100–300</td>
+      <td style="color:#e53935;">✗ 杀菌太慢</td>
+    </tr>
+  </table>
+  <p style="font-size:12px;color:#999;">
+    关键参考：Kousha et al., <em>Photochem Photobiol</em>, 2024 (222nm 眼部安全) · Welch et al., <em>Photochem Photobiol</em>, 2023 (222nm 皮肤安全) · IARC Monograph Vol.55 (UVC Group 1 致癌) · MacLean et al., <em>J Hosp Infect</em>, 2014 (405nm 效率低)
+  </p>
+</div>
+
+<!-- ===== 3. 安全标准与参考产品 ===== -->
+<div class="section">
+  <h2>三、安全标准与参考产品</h2>
+  <table>
+    <tr><th>类型</th><th>名称</th><th>与 INKNOT 关系</th><th>链接</th></tr>
+    <tr>
+      <td>🔬 国际标准</td><td><strong>IEC 61010-2-040</strong></td><td>Clause 15 要求 UV 灭菌柜必须有联锁断电</td><td><a href="https://shop.standards.ie/en-ie/standards/iec-61010-2-040-2-0-565195_saig_iec_iec_1289524" target="_blank">IEC 页面</a></td>
+    </tr>
+    <tr>
+      <td>🔬 美国法规</td><td><strong>FDA 21 CFR 880.6600</strong></td><td>UV 消毒柜 Class II 医疗器械，强制联锁+标签</td><td><a href="https://www.ecfr.gov/compare/2025-12-04/to/2025-12-03/title-21/chapter-I/subchapter-H/part-880/subpart-G/section-880.6600" target="_blank">FDA 页面</a></td>
+    </tr>
+    <tr>
+      <td>🔬 安全标准</td><td><strong>UL 8802</strong></td><td>UV 杀菌设备安全，联锁作为工程防护</td><td>—</td>
+    </tr>
+    <tr>
+      <td>🔬 光安全</td><td><strong>IEC 62471</strong></td><td>UV 光生物安全分级（RG0–RG3）</td><td>—</td>
+    </tr>
+    <tr>
+      <td>🔬 中国国标</td><td><strong>GB/T 30117.6-2025</strong></td><td>紫外线灯产品光生物安全（2025.12实施）</td><td>—</td>
+    </tr>
+    <tr>
+      <td>🖥️ 参考产品</td><td><strong>JEIOTECH UVC-11</strong></td><td>实验室 UV 灭菌柜：254nm+联锁+防UV观察窗+304不锈钢</td>
+      <td><a href="https://www.jeiotech.com/eng/product/product.php?ptype=view&prdcode=1601070004&catcode=101400" target="_blank">英文</a> · <a href="https://www.jeio-tech.com.cn/UVCmiejungui.html" target="_blank">中文</a></td>
+    </tr>
+    <tr>
+      <td>🖥️ 参考产品</td><td><strong>Airtech BSC-06ⅡA2</strong></td><td>生物安全柜：254nm+UV/LED/前窗三联锁+定时器</td>
+      <td><a href="https://www.airtechsat.com/product/162.html" target="_blank">官网</a></td>
+    </tr>
+    <tr>
+      <td>🖥️ 参考产品</td><td><strong>USHIO Care222</strong></td><td>222nm Far-UVC 模组，已商用</td>
+      <td><a href="https://www.ushio.com/product/care222-filtered-far-uv-c-excimer-lamp-module/" target="_blank">USHIO 官网</a></td>
+    </tr>
+  </table>
+</div>
+
+<!-- ===== 4. 香纸品牌 ===== -->
+<div class="section">
+  <h2>四、香纸品牌（INKNOT 纪念香纸参考）</h2>
+  <table>
+    <tr><th>品牌</th><th>国家</th><th>创立</th><th>基材</th><th>香源</th><th>燃烧</th><th>价格</th><th>链接</th></tr>
+    <tr>
+      <td><strong>Papier d'Arménie</strong> <span class="tag-sm tag-fr">🇫🇷</span></td>
+      <td>法国</td><td>1885</td><td>吸墨纸</td><td>安息香树脂+90°酒精</td><td>闷烧</td><td>€3.5/册</td>
+      <td><a href="https://www.papierdarmenie.fr/en/" target="_blank">官网</a></td>
+    </tr>
+    <tr>
+      <td><strong>Carta Aromatica d'Eritrea</strong> <span class="tag-sm tag-it">🇮🇹</span></td>
+      <td>意大利</td><td>1927</td><td>纯纤维素纸</td><td>天然精油+树脂+苔藓</td><td>闷烧</td><td>€4–6/册</td>
+      <td><a href="https://www.cartaeritrea.it/?lang=en" target="_blank">官网</a></td>
+    </tr>
+    <tr>
+      <td><strong>HA KO</strong> <span class="tag-sm tag-jp">🇯🇵</span></td>
+      <td>日本</td><td>1893</td><td>和纸</td><td>IFRA 认证合成香料</td><td>闷烧 / 香薰</td><td>$8–15/盒</td>
+      <td><a href="https://morihata.com/collections/home" target="_blank">Morihata</a></td>
+    </tr>
+    <tr>
+      <td><strong>WASHI Incense</strong> <span class="tag-sm tag-jp">🇯🇵</span></td>
+      <td>日本</td><td>当代</td><td>和纸</td><td>香料</td><td>闷烧</td><td>¥500–800</td>
+      <td><a href="https://shop.kohgen.com/collections/woody/products/kunjudo-washi-incense" target="_blank">Kohgen</a></td>
+    </tr>
+    <tr>
+      <td><strong>OPTATUM</strong> <span class="tag-sm tag-kr">🇰🇷</span></td>
+      <td>韩国</td><td>当代</td><td>天然纸浆</td><td>法国高级香精</td><td>燃 3min / 香 5–6h</td><td>¥110–162</td>
+      <td><a href="https://cn.optatum.co.kr" target="_blank">中文站</a> · <a href="https://empresskorea.com/collections/home-care/products/optatum-8-flavors-paper-incense-trial-kit-36-servings" target="_blank">试用装</a></td>
+    </tr>
+  </table>
+</div>
+
+<!-- ===== 5. INKNOT BOM ===== -->
+<div class="section">
+  <h2>五、INKNOT UV 洁净仓 BOM 成本估算</h2>
+  <table>
+    <tr><th>部件</th><th>选型</th><th>原型单价</th><th>量产(1000台)</th></tr>
+    <tr><td>UVC LED 模块</td><td>5W COB 265nm</td><td>¥80–150</td><td>¥40–80</td></tr>
+    <tr><td>磁控联锁开关</td><td>门磁传感器+继电器模块</td><td>¥15–30</td><td>¥8–15</td></tr>
+    <tr><td>防 UV 玻璃/亚克力滑盖</td><td>定制切割，阻隔 99.9% UVC</td><td>¥100–200</td><td>¥50–100</td></tr>
+    <tr><td>UV 状态指示灯</td><td>LED 灯珠+面板</td><td>¥10</td><td>¥5</td></tr>
+    <tr><td>不锈钢仓体</td><td>304 不锈钢折弯加工</td><td>¥200–400</td><td>¥100–200</td></tr>
+    <tr><td>抽屉滑轨</td><td>重型静音滑轨</td><td>¥50–80</td><td>¥25–40</td></tr>
+    <tr><td>控制电路</td><td>定时器模块+驱动电源</td><td>¥60–100</td><td>¥30–50</td></tr>
+    <tr><td>散热风扇</td><td>小型静音风扇</td><td>¥20</td><td>¥10</td></tr>
+    <tr style="background:#f9f9f9;font-weight:700;"><td colspan="2">合计</td><td>¥535–990</td><td>¥268–500</td></tr>
+  </table>
+</div>
+
+<!-- ===== 6. 纪念香纸 ===== -->
+<div class="section">
+  <h2>六、纪念香纸 BOM</h2>
+  <table>
+    <tr><th>材料</th><th>规格</th><th>单片成本</th></tr>
+    <tr><td>吸墨纸</td><td>A4 裁 8 片，天然纤维</td><td>¥0.06</td></tr>
+    <tr><td>安息香树脂</td><td>食品级，批发 ¥80/kg，单片 ~0.3g</td><td>¥0.02</td></tr>
+    <tr><td>90° 酒精</td><td>浸渍用</td><td>¥0.01</td></tr>
+    <tr><td>裁切+包装</td><td>名片大小独立包装</td><td>¥0.10</td></tr>
+    <tr style="background:#f9f9f9;font-weight:700;"><td colspan="2">单片合计</td><td>≈ ¥0.19</td></tr>
+    <tr style="background:#f9f9f9;font-weight:700;"><td colspan="2">每人工具包（转印纸+耗材+香纸）合计</td><td>≈ ¥3–8</td></tr>
+  </table>
+</div>
+
+<div class="footnote">
+  <strong>汇总统计：</strong>纹身工具台 8 品牌 · 消毒光源 4 项技术 · 安全标准 5 项 · 参考产品 3 个 · 香纸 5 品牌 · BOM 表 2 张<br>
+  完整调研 PPT：<a href="https://kazi-0220.github.io/inknot-tattoo-workstation-research/">kazi-0220.github.io/inknot-tattoo-workstation-research/</a>
+</div>
+
+</body>
+</html>
